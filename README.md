@@ -4,4 +4,4 @@
 
 ##example 
 
-	![image](http://github.com/jasya/nck/raw/master/example.png)
+![](https://github.com/jasya/nck/blob/master/example.png)
