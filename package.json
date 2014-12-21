@@ -1,0 +1,17 @@
+{
+  "name": "nck",
+  "version": "0.0.1",
+  "description": "lick ack ",
+  "main": "nck.js",
+  "dependencies": {
+    "commander": "^2.5.1",
+    "sync-read-lines": "^0.0.2",
+    "colorful": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jasya",
+  "license": "ISC"
+}
