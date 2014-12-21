@@ -1,6 +1,6 @@
 {
   "name": "nck",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "lick ack ",
   "main": "nck.js",
   "dependencies": {
@@ -13,5 +13,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jasya",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasya/nck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jasya/nck/issues"
+  },
+  "homepage": "https://github.com/jasya/nck"
 }
