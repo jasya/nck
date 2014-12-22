@@ -3,7 +3,7 @@
 * @Author: jasya
 * @Date:   2014-12-21 21:34:44
 * @Last Modified by:   jasya
-* @Last Modified time: 2014-12-22 00:37:52
+* @Last Modified time: 2014-12-22 10:06:27
 */
 
 'use strict';
@@ -44,10 +44,15 @@ if(!chars) return;
 
 
 var extension = ['.o','.jpg','.png','.idx','.pack','.node'];
-var ext_dir   = ['.git'];
+var ext_dir   = ['.git/objects','.git/index'];
 function read(path){
 	fs.stat(path,function(err, stats){
 		if (err) {return err};
+		for(var i in ext_dir){
+			if(~path.indexOf(ext_dir[i])){
+				return ;
+			}
+		}
 		if(stats.isDirectory()){
 			fs.readdir(path,function(err,files){
 				if(err){return err}

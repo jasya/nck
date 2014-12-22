@@ -1,6 +1,6 @@
 {
   "name": "nck",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "lick ack ",
   "main": "nck.js",
   "dependencies": {
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/jasya/nck/issues"
   },
-  "homepage": "https://github.com/jasya/nck"
+  "homepage": "https://github.com/jasya/nck",
+  "bin": {
+    "nck": "./bin/nck.js"
+  }
 }
