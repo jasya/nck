@@ -3,7 +3,8 @@
 * @Author: jasya
 * @Date:   2014-12-21 21:34:44
 * @Last Modified by:   jasya
-* @Last Modified time: 2014-12-22 14:48:32
+<<<<<<< HEAD
+* @Last Modified time: 2014-12-22 14:52:15
 */
 
 'use strict';
@@ -11,6 +12,7 @@
 var program = require('commander'),
 paths       = require('path'),
 fs          = require('fs');
+
 
 require('colorful').toxic();
 
@@ -89,13 +91,3 @@ function match(str,path){
 read(path);
 console.log(' chars: %j'.bold, chars);
 console.log(' path: %j'.magenta, path);
-
-
-
-
-
-
-
-
-
-
