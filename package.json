@@ -1,6 +1,6 @@
 {
   "name": "nck",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "lick ack ",
   "main": "nck.js",
   "dependencies": {
