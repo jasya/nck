@@ -3,8 +3,7 @@
 * @Author: jasya
 * @Date:   2014-12-21 21:34:44
 * @Last Modified by:   jasya
-<<<<<<< HEAD
-* @Last Modified time: 2014-12-22 14:52:15
+* @Last Modified time: 2014-12-22 14:54:32
 */
 
 'use strict';
