@@ -3,7 +3,7 @@
 * @Author: jasya
 * @Date:   2014-12-21 21:34:44
 * @Last Modified by:   jasya
-* @Last Modified time: 2014-12-22 14:54:32
+* @Last Modified time: 2014-12-22 15:28:01
 */
 
 'use strict';
@@ -15,24 +15,26 @@ fs          = require('fs');
 
 require('colorful').toxic();
 
-function list(val) {
-    return val.split(',');
-}
-
 function files_type(val){
     return val.split(',');
 }
 
 
 program
-.version('0.0.1')
-.usage('[options] <file ...>')
-.option('-t, --type-set <items>', 'file types', files_type)
-.option('-l, --list <items>', 'A list', list)
+.version('0.0.2')
+.usage('[options] <char ...>')
+.option('-t, --type-set <items>', 'set file types', files_type)
 .parse(process.argv);
 
-var files_type     = program.typeSet;
-var chars          = program.list || program.args.length == 2 ? program.args[0] : program.args[1] || program.args[0];
+var files_type = undefined;
+
+if(program.typeSet){
+    files_type     = program.typeSet.map(function(value,index){
+        return '.' + value;
+    });
+}
+
+var chars          = program.args.length == 2 ? program.args[0] : program.args[1] || program.args[0];
 var path           = program.args.length == 2 ? program.args[1] : program.args[0];
 
 if(program.args.length == 1){
@@ -62,6 +64,11 @@ function read(path){
                     });
             });
         }else if(stats.isFile()){
+            if(files_type){
+                if(!~files_type.indexOf(path.substring(path.lastIndexOf('.'),path.length))){
+                    return;
+                }
+            }
             if(~extension.indexOf(path.substring(path.lastIndexOf('.'),path.length)) == 0){
                 fs.readFile(path,function(err,data){
                     if(err){return err}

@@ -1,6 +1,12 @@
 #nck
 
-	npm install nck
+    npm install nck
+
+##Usage
+
+    nck 404 
+
+    nck -t js,html div /path
 
 ##example 
 
