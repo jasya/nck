@@ -1,6 +1,6 @@
 #nck
 
-    npm install nck
+    npm install nck -g
 
 ##Usage
 
