@@ -3,7 +3,7 @@
 * @Author: jasya
 * @Date:   2014-12-21 21:34:44
 * @Last Modified by:   jasya
-* @Last Modified time: 2014-12-22 10:06:27
+* @Last Modified time: 2014-12-22 10:11:12
 */
 
 'use strict';
@@ -87,9 +87,7 @@ function match(str,path){
 }
 
 read(path);
-// console.log(program.args)
 console.log(' chars: %j'.bold, chars);
-// console.log(' type: %j'.red, files_type);
 console.log(' path: %j'.magenta, path);
 
 
