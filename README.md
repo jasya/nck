@@ -4,10 +4,10 @@
 
 ##Usage
 
-    nck 404 
+    nck 404
 
     nck -t js,html div /path
 
-##example 
+##example
 
 ![](https://raw.githubusercontent.com/jasya/nck/master/example.png)

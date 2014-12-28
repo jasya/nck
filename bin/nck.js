@@ -1,29 +1,34 @@
 #!/usr/bin/env node
-/* 
+/*
 * @Author: jasya
 * @Date:   2014-12-21 21:34:44
 * @Last Modified by:   jasya
-* @Last Modified time: 2014-12-22 15:28:01
+* @Last Modified time: 2014-12-23 09:59:54
 */
 
 'use strict';
 
 var program = require('commander'),
 paths       = require('path'),
-fs          = require('fs');
+fs          = require('fs'),
+fileType    = require('file-type');
 
 
 require('colorful').toxic();
 
-function files_type(val){
+function _files_type(val){
     return val.split(',');
 }
 
+function _chars(val){
+    return val.split(',');
+}
 
 program
 .version('0.0.2')
 .usage('[options] <char ...>')
-.option('-t, --type-set <items>', 'set file types', files_type)
+.option('-t, --type-set <items>', 'set file types', _files_type)
+.option('-c, --chars <items>', 'set search chars', _chars)
 .parse(process.argv);
 
 var files_type = undefined;
@@ -45,8 +50,6 @@ path = paths.resolve(path);
 
 if(!chars) return;
 
-
-var extension = ['.o','.jpg','.png','.idx','.pack','.node'];
 var ext_dir   = ['.git','.svn','node_modules'];
 function read(path){
     fs.stat(path,function(err, stats){
@@ -69,12 +72,13 @@ function read(path){
                     return;
                 }
             }
-            if(~extension.indexOf(path.substring(path.lastIndexOf('.'),path.length)) == 0){
                 fs.readFile(path,function(err,data){
                     if(err){return err}
+                        if(fileType(data)){
+                            return false;
+                        }
                         match(data.toString('utf8'),path);
                 });
-            }
         }
     });
 }
@@ -83,14 +87,17 @@ function match(str,path){
     var content = str.split(/\r\n|\n/ig);
     var lengs   = 1;
     var re      = new RegExp(chars,'ig');
-    if(re.test(str)){
-        console.log('\n%s'.bold,path);
-    }
+    var _out = [];
+    _out.push(path.toString().bold + '\n');
     for(var i in content){
         if(re.test(content[i])){
-            console.log(lengs.toString().grey + ':%s',content[i].replace(re,chars.cyan));
+            _out.push(lengs.toString().grey)
+            _out.push(content[i].replace(re,chars.cyan) + '\n');
         }
         lengs++;
+    }
+    if(_out.length > 1){
+        console.log(_out.join(''));
     }
 }
 

@@ -1,12 +1,13 @@
 {
   "name": "nck",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "lick ack ",
   "main": "nck.js",
   "dependencies": {
+    "colorful": "^2.1.0",
     "commander": "^2.5.1",
-    "sync-read-lines": "^0.0.2",
-    "colorful": "^2.1.0"
+    "file-type": "^2.0.1",
+    "sync-read-lines": "^0.0.2"
   },
   "devDependencies": {},
   "scripts": {
