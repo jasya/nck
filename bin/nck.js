@@ -16,19 +16,17 @@ fileType    = require('file-type');
 
 require('colorful').toxic();
 
-function _files_type(val){
-    return val.split(',');
-}
 
-function _chars(val){
+function _parse(val){
     return val.split(',');
 }
 
 program
 .version('0.0.2')
 .usage('[options] <char ...>')
-.option('-t, --type-set <items>', 'set file types', _files_type)
-.option('-c, --chars <items>', 'set search chars', _chars)
+.option('-t, --type-set <items>', 'set file types', _parse)
+.option('-c, --chars <items>', 'set search chars', _parse)
+.option('-d, --ignore-dir <items>','ignore dir',_parse)
 .parse(process.argv);
 
 var files_type = undefined;
@@ -51,6 +49,8 @@ path = paths.resolve(path);
 if(!chars) return;
 
 var ext_dir   = ['.git','.svn','node_modules'];
+ext_dir       = Array.prototype.concat.apply(ext_dir,program.ignoreDir);
+
 function read(path){
     fs.stat(path,function(err, stats){
         if (err) {return err};
@@ -102,5 +102,5 @@ function match(str,path){
 }
 
 read(path);
-console.log(' chars: %j'.bold, chars);
-console.log(' path: %j'.magenta, path);
+console.log(' chars : %j'.bold, chars);
+console.log(' path  : %j'.magenta, path);
