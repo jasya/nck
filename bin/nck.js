@@ -11,6 +11,7 @@
 var program = require('commander'),
 paths       = require('path'),
 fs          = require('fs'),
+help_type   = require('../lib/help_type.js').types,
 fileType    = require('file-type');
 
 
@@ -27,6 +28,9 @@ program
 .option('-t, --type-set <items>', 'set file types', _parse)
 .option('-c, --chars <items>', 'set search chars', _parse)
 .option('-d, --ignore-dir <items>','ignore dir',_parse)
+.on('--help',function(){
+    console.log('The following is the list of filetypes supported:');
+})
 .parse(process.argv);
 
 var files_type = undefined;

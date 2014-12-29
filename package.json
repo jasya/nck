@@ -7,7 +7,6 @@
     "colorful": "^2.1.0",
     "commander": "^2.5.1",
     "file-type": "^2.0.1",
-    "sync-read-lines": "^0.0.2"
   },
   "devDependencies": {},
   "scripts": {
