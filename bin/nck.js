@@ -11,7 +11,7 @@
 var program = require('commander'),
 paths       = require('path'),
 fs          = require('fs'),
-help_type   = require('../lib/help_type.js').types,
+help_type   = require('../lib/help_type.js'),
 fileType    = require('file-type');
 
 
@@ -26,20 +26,18 @@ program
 .version('0.0.2')
 .usage('[options] <char ...>')
 .option('-t, --type-set <items>', 'set file types', _parse)
-.option('-c, --chars <items>', 'set search chars', _parse)
-.option('-d, --ignore-dir <items>','ignore dir',_parse)
-.on('--help',function(){
-    console.log('The following is the list of filetypes supported:');
-})
-.parse(process.argv);
-
-var files_type = undefined;
+.option('-d, --ignore-dir <items>','ignore dir',_parse);
+program.on('--help', help_type.help);
+program.parse(process.argv);
+var files_type = [];
 
 if(program.typeSet){
     files_type     = program.typeSet.map(function(value,index){
         return '.' + value;
     });
 }
+setFileType(files_type,program.rawArgs);
+
 
 var chars          = program.args.length == 2 ? program.args[0] : program.args[1] || program.args[0];
 var path           = program.args.length == 2 ? program.args[1] : program.args[0];
@@ -48,9 +46,11 @@ if(program.args.length == 1){
     path = process.cwd();
 }
 
+
 path = paths.resolve(path);
 
 if(!chars) return;
+
 
 var ext_dir   = ['.git','.svn','node_modules'];
 ext_dir       = Array.prototype.concat.apply(ext_dir,program.ignoreDir);
@@ -105,6 +105,17 @@ function match(str,path){
     }
 }
 
+function setFileType(files_type,raw){
+    for(var i in raw){
+        var reg = new RegExp(/--.*/i);
+        if(reg.test(raw[i])){
+            var _temp = help_type.types[raw[i].substring(2,raw[i].length)];
+            if(_temp){
+                Array.prototype.push.apply(files_type,_temp);
+            }
+        }
+    }
+}
 read(path);
 console.log(' chars : %j'.bold, chars);
 console.log(' path  : %j'.magenta, path);
