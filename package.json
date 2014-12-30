@@ -1,28 +1,33 @@
 {
   "name": "nck",
   "version": "0.0.10",
-  "description": "lick ack ",
-  "main": "nck.js",
+  "description": "like ack",
+  "main": "index.js",
+  "bin": {
+    "nck": "nck.js"
+  },
   "dependencies": {
-    "colorful": "^2.1.0",
     "commander": "^2.5.1",
-    "file-type": "^2.0.1",
+    "colorful": "^2.1.0",
+    "file-type": "^2.0.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "jasya",
-  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/jasya/nck.git"
   },
+  "keywords": [
+    "char",
+    "search",
+    "command"
+  ],
+  "author": "jasya",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/jasya/nck/issues"
   },
-  "homepage": "https://github.com/jasya/nck",
-  "bin": {
-    "nck": "./bin/nck.js"
-  }
+  "homepage": "https://github.com/jasya/nck"
 }
