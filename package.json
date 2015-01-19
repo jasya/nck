@@ -1,10 +1,10 @@
 {
   "name": "nck",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "like ack",
   "main": "index.js",
   "bin": {
-    "nck": "nck.js"
+    "nck": "./bin/nck.js"
   },
   "dependencies": {
     "commander": "^2.5.1",

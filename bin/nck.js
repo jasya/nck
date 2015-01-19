@@ -71,7 +71,7 @@ function read(path){
                     });
             });
         }else if(stats.isFile()){
-            if(files_type){
+            if(files_type.length != 0){
                 if(!~files_type.indexOf(path.substring(path.lastIndexOf('.'),path.length))){
                     return;
                 }
